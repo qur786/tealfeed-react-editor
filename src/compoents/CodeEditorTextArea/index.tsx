@@ -1,15 +1,21 @@
 import { useRef, useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
-import type { ChangeEventHandler, UIEventHandler } from "react";
+import type {
+  ChangeEventHandler,
+  KeyboardEventHandler,
+  UIEventHandler,
+} from "react";
 import type { AvailableTheme } from "../utils";
 import "./index.css";
 
 interface CodeEditorTextAreaProps {
   theme: AvailableTheme;
+  tabSize?: number;
 }
 
 export function CodeEditorTextArea({
   theme,
+  tabSize = 2,
 }: CodeEditorTextAreaProps): JSX.Element {
   const [text, setText] = useState("");
   const editorRef = useRef<HTMLDivElement>(null);
@@ -21,8 +27,30 @@ export function CodeEditorTextArea({
   const handleEditorScroll: UIEventHandler<HTMLTextAreaElement> = (event) => {
     editorRef.current?.scrollTo({
       top: event.currentTarget.scrollTop,
-    });
+    }); // On textarea scroll, scroll the highlight div to see the content.
   };
+
+  const handleTabKeyInput: KeyboardEventHandler<HTMLTextAreaElement> = (
+    event,
+  ) => {
+    if (event.code === "Tab") {
+      event.preventDefault(); // So, that text-area doesn't loose focus on tab press.
+
+      event.currentTarget.setRangeText(
+        " ".repeat(tabSize),
+        event.currentTarget.selectionStart,
+        event.currentTarget.selectionStart,
+        "end",
+      ); // Insert tab
+
+      event.currentTarget.dispatchEvent(
+        new Event("change", {
+          bubbles: true,
+        }),
+      ); // Dispatching 'change' event, since due to 'event.preventDefault' call, it will kill the change event.
+    }
+  };
+
   return (
     <div className="container">
       <pre
@@ -56,36 +84,16 @@ export function CodeEditorTextArea({
       />
       <textarea
         className="textarea editor"
-        onScroll={handleEditorScroll}
         value={text}
+        onScroll={handleEditorScroll}
         onChange={handleTextChange}
-        onKeyDown={(event) => {
-          if (event.code === "Tab") {
-            const e = event;
-            const start = e.currentTarget.selectionStart;
-            // e.currentTarget.selectionEnd =
-            //   start + Number.parseInt(e.currentTarget.style.tabSize, 10);
-            setText((prev) => {
-              return prev.slice(0, start) + "\t" + prev.slice(start);
-            });
-            // event.currentTarget.setRangeText(
-            //   "\t",
-
-            //   event.currentTarget.selectionStart,
-
-            //   event.currentTarget.selectionStart,
-
-            //   "end",
-            // );
-            // setValue((value) => value.concat("\t"));
-            return false;
-          }
-        }}
+        onKeyDown={handleTabKeyInput}
         autoCapitalize="off"
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}
         data-gramm={false}
+        autoFocus
       />
     </div>
   );

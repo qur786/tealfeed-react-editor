@@ -30,6 +30,7 @@ export function CodeEditor({ style = {} }: CodeEditorProps): JSX.Element {
   return (
     <div className="main" style={style}>
       <div className="header">
+        {/* Select inputs to select theme and language of the editor. */}
         <SelectInput
           label="Select theme:"
           selectProps={{

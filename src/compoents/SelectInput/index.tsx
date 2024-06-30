@@ -8,7 +8,7 @@ export interface SelectInputProps {
     React.SelectHTMLAttributes<HTMLSelectElement>,
     HTMLSelectElement
   >;
-  options: Record<string, string>;
+  options: Record<string, string>; // label => value dictionary
 }
 
 export function SelectInput({
