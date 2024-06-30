@@ -13,6 +13,12 @@ interface CodeEditorTextAreaProps {
   tabSize?: number;
 }
 
+/**
+ * `Main` part of the editor, where user can write code.
+ *
+ * @param {CodeEditorTextAreaProps} param0
+ * @returns {JSX.Element}
+ */
 export function CodeEditorTextArea({
   theme,
   tabSize = 2,
@@ -27,7 +33,7 @@ export function CodeEditorTextArea({
   const handleEditorScroll: UIEventHandler<HTMLTextAreaElement> = (event) => {
     editorRef.current?.scrollTo({
       top: event.currentTarget.scrollTop,
-    }); // On textarea scroll, scroll the highlight div to see the content.
+    }); // On textarea scroll, scroll the highlight div to maintain the same visible content and to see the content.
   };
 
   const handleTabKeyInput: KeyboardEventHandler<HTMLTextAreaElement> = (

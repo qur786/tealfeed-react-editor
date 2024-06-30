@@ -11,6 +11,12 @@ export interface SelectInputProps {
   options: Record<string, string>; // label => value dictionary
 }
 
+/**
+ * A `generic` select input component
+ *
+ * @param {SelectInputProps} param0
+ * @returns {JSX.Element}
+ */
 export function SelectInput({
   label,
   selectProps,

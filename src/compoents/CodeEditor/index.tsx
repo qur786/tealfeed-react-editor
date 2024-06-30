@@ -11,6 +11,12 @@ interface CodeEditorProps {
   style: CSSProperties;
 }
 
+/**
+ * Editor component with `theme` and `language` selection for user.
+ *
+ * @param {CodeEditorProps} param0
+ * @returns {JSX.Element}
+ */
 export function CodeEditor({ style = {} }: CodeEditorProps): JSX.Element {
   const [theme, setTheme] = useState<AvailableTheme>("vsDark");
   const [language, setLanguage] = useState<AvailableLanguage>("tsx");
