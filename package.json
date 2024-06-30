@@ -12,6 +12,8 @@
     "start": "vite"
   },
   "dependencies": {
+    "prism-react-renderer": "^2.3.1",
+    "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

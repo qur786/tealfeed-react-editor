@@ -1,0 +1,15 @@
+.main {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  height: 40px;
+}

@@ -1,0 +1,92 @@
+@import url("https://fonts.cdnfonts.com/css/monaco");
+@import url("https://fonts.cdnfonts.com/css/consola-mono");
+@import url("https://fonts.cdnfonts.com/css/lucida-console");
+
+textarea::-moz-selection {
+  /* Code for Firefox */
+  background: #bdeef960;
+}
+
+textarea::selection {
+  background: #bdeef960;
+}
+
+/* width */
+textarea::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+textarea::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover,
+div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+}
+
+.textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  caret-color: green;
+  padding: 0;
+  outline: 0;
+  resize: none;
+  color: inherit;
+  background: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+  border: 1px solid black;
+  position: relative;
+  pointer-events: none;
+}
+
+.editor {
+  margin: 0;
+  border: 0;
+  flex-grow: 1;
+  height: inherit;
+  width: inherit;
+  background: none;
+  box-sizing: inherit;
+  display: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-variant-ligatures: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  text-indent: inherit;
+  text-rendering: inherit;
+  text-transform: inherit;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
