@@ -11,6 +11,7 @@ import "./index.css";
 interface CodeEditorTextAreaProps {
   theme: AvailableTheme;
   tabSize?: number;
+  initialText?: string;
 }
 
 /**
@@ -22,8 +23,9 @@ interface CodeEditorTextAreaProps {
 export function CodeEditorTextArea({
   theme,
   tabSize = 2,
+  initialText = "",
 }: CodeEditorTextAreaProps): JSX.Element {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(initialText);
   const editorRef = useRef<HTMLDivElement>(null);
 
   const handleTextChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {

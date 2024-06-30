@@ -9,6 +9,7 @@ import "./index.css";
 
 interface CodeEditorProps {
   style: CSSProperties;
+  initialText?: string;
 }
 
 /**
@@ -17,7 +18,10 @@ interface CodeEditorProps {
  * @param {CodeEditorProps} param0
  * @returns {JSX.Element}
  */
-export function CodeEditor({ style = {} }: CodeEditorProps): JSX.Element {
+export function CodeEditor({
+  style = {},
+  initialText,
+}: CodeEditorProps): JSX.Element {
   const [theme, setTheme] = useState<AvailableTheme>("vsDark");
   const [language, setLanguage] = useState<AvailableLanguage>("tsx");
 
@@ -60,7 +64,7 @@ export function CodeEditor({ style = {} }: CodeEditorProps): JSX.Element {
           )}
         />
       </div>
-      <CodeEditorTextArea theme={theme} />
+      <CodeEditorTextArea theme={theme} initialText={initialText} />
     </div>
   );
 }
