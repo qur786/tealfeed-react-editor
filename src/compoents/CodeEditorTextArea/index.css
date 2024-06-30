@@ -1,6 +1,12 @@
-@import url("https://fonts.cdnfonts.com/css/monaco");
-@import url("https://fonts.cdnfonts.com/css/consola-mono");
-@import url("https://fonts.cdnfonts.com/css/lucida-console");
+@font-face {
+  font-family: "monaco";
+  src: url("./Monaco.woff");
+}
+
+@font-face {
+  font-family: "lucon";
+  src: url("./lucon.woff");
+}
 
 textarea::-moz-selection {
   /* Code for Firefox */
@@ -42,7 +48,7 @@ div::-webkit-scrollbar-thumb:hover {
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
-  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-family: monaco, lucon, monospace;
 }
 
 .textarea {
